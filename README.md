@@ -9,4 +9,6 @@ const panel = new ControlPanel({
   host: "https://dashboard.your.domain",
   authorization: "API_TOKEN",
 });
+
+const users = await panel.users.get();
 ```
