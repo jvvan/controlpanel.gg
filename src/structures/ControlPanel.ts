@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import { getURLOrigin } from "../util";
 import { ControlPanelError } from "./ControlPanelError";
+import { Notifications } from "./Notifications";
 import { Servers } from "./Servers";
 import { Users } from "./Users";
 import { Vouchers } from "./Vouchers";
@@ -10,6 +11,7 @@ export class ControlPanel {
   users: Users;
   servers: Servers;
   vouchers: Vouchers;
+  notifications: Notifications;
 
   constructor(options: ControlPanelOptions) {
     this.#options = {
@@ -21,6 +23,7 @@ export class ControlPanel {
     this.users = new Users(this);
     this.servers = new Servers(this);
     this.vouchers = new Vouchers(this);
+    this.notifications = new Notifications(this);
   }
 
   headers(headers: Record<string, string>) {

@@ -20,7 +20,6 @@ export class Server {
 
   constructor(panel: ControlPanel, data: ApiServer) {
     this.panel = panel;
-    this.data = data;
     this.product = new Product(panel, data.product);
 
     this._patch(data);

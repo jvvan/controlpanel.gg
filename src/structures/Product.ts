@@ -23,12 +23,13 @@ export class Product {
 
   constructor(panel: ControlPanel, data: ApiProduct) {
     this.panel = panel;
-    this.data = data;
 
     this._patch(data);
   }
 
   _patch(data: ApiProduct) {
+    this.data = data;
+
     data.id && (this.id = data.id);
     data.name && (this.name = data.name);
     data.description && (this.description = data.description);

@@ -22,7 +22,6 @@ export class User {
 
   constructor(panel: ControlPanel, data: ApiUser) {
     this.panel = panel;
-    this.data = data;
 
     this._patch(data);
   }

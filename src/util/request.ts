@@ -1,6 +1,8 @@
 export function toFormData(data: Record<string, any>) {
   return new URLSearchParams(
-    Object.entries(data).map(([key, value]) => [key, String(value)])
+    Object.entries(data)
+      .filter(([, value]) => value !== undefined)
+      .map(([key, value]) => [key, String(value)])
   );
 }
 

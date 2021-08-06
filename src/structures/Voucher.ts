@@ -18,12 +18,13 @@ export class Voucher {
 
   constructor(panel: ControlPanel, data: ApiVoucher) {
     this.panel = panel;
-    this.data = data;
 
     this._patch(data);
   }
 
   _patch(data: ApiVoucher) {
+    this.data = data;
+
     data.id && (this.id = data.id);
     data.memo && (this.memo = data.memo);
     data.code && (this.code = data.code);

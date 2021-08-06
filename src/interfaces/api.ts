@@ -63,3 +63,21 @@ export interface ApiVoucher {
 }
 
 export type VoucherStatus = "VALID" | "EXPIRED" | "USES_LIMIT_REACHED";
+
+export interface ApiNotification {
+  id: string;
+  type: string;
+  notifiable_type: string;
+  notifiable_id: number;
+  data: ApiNotificationData;
+  read_at: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ApiNotificationData {
+  title: string;
+  content: string;
+}
+
+export type NotificationVia = "database" | "mail";
