@@ -5,7 +5,7 @@ export function toFormData(data: Record<string, any>) {
 }
 
 export function getURLOrigin(url: string) {
-  return new URL(url).origin;
+  return url.replace(/\/+$/, "");
 }
 
 export const formDataHeaders = {
