@@ -25,6 +25,7 @@ export class Notification {
     this.data = data;
 
     data.id && (this.id = data.id);
+    data.type && (this.type = data.type);
     data.notifiable_type && (this.notifiableType = data.notifiable_type);
     data.notifiable_id && (this.notifiableID = data.notifiable_id);
     data.data.title && (this.title = data.data.title);
