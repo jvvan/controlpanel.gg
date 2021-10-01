@@ -58,7 +58,7 @@ export class Notifications {
     title: string;
     content: string;
   }): Promise<true> {
-    return await this.panel.request(
+    await this.panel.request(
       "POST",
       `/api/notifications`,
       toFormData({

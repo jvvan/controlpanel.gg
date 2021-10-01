@@ -24,14 +24,14 @@ export class Notification {
   _patch(data: ApiNotification) {
     this.data = data;
 
-    data.id && (this.id = data.id);
-    data.type && (this.type = data.type);
-    data.notifiable_type && (this.notifiableType = data.notifiable_type);
-    data.notifiable_id && (this.notifiableID = data.notifiable_id);
-    data.data.title && (this.title = data.data.title);
-    data.data.content && (this.content = data.data.content);
-    data.read_at && (this.readAt = new Date(data.read_at));
-    data.created_at && (this.createdAt = new Date(data.created_at));
-    data.updated_at && (this.updatedAt = new Date(data.updated_at));
+    this.id = data.id;
+    this.type = data.type;
+    this.notifiableType = data.notifiable_type;
+    this.notifiableID = data.notifiable_id;
+    this.title = data.data.title;
+    this.content = data.data.content;
+    this.readAt = new Date(data.read_at);
+    this.createdAt = new Date(data.created_at);
+    this.updatedAt = new Date(data.updated_at);
   }
 }

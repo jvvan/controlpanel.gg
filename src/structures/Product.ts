@@ -30,21 +30,22 @@ export class Product {
   _patch(data: ApiProduct) {
     this.data = data;
 
-    data.id && (this.id = data.id);
-    data.name && (this.name = data.name);
-    data.description && (this.description = data.description);
-    data.price && (this.price = data.price);
-    data.memory && (this.memory = data.memory);
-    data.cpu && (this.cpu = data.cpu);
-    data.swap && (this.swap = data.swap);
-    data.disk && (this.disk = data.disk);
-    data.io && (this.io = data.io);
-    data.databases && (this.databases = data.databases);
-    data.backups && (this.backups = data.backups);
-    data.allocations && (this.allocations = data.allocations);
-    data.created_at && (this.createdAt = new Date(data.created_at));
-    data.updated_at && (this.updatedAt = new Date(data.updated_at));
-    data.disabled && (this.disabled = data.disabled);
+    this.id = data.id;
+    this.name = data.name;
+    this.description = data.description;
+    this.price = parseFloat(data.price as any);
+    this.memory = parseFloat(data.memory as any);
+    this.cpu = parseFloat(data.cpu as any);
+    this.swap = parseFloat(data.swap as any);
+    this.disk = parseFloat(data.disk as any);
+    this.io = parseFloat(data.io as any);
+    this.databases = parseFloat(data.databases as any);
+    this.backups = parseFloat(data.backups as any);
+
+    this.allocations = parseFloat(data.allocations as any);
+    this.createdAt = new Date(data.created_at);
+    this.updatedAt = new Date(data.updated_at);
+    this.disabled = data.disabled;
 
     return this;
   }

@@ -29,22 +29,24 @@ export class User {
   _patch(data: ApiUser) {
     this.data = data;
 
-    data.id && (this.id = data.id);
-    data.name && (this.name = data.name);
-    data.role && (this.role = data.role);
-    data.credits && (this.credits = data.credits);
-    data.server_limit && (this.serverLimit = data.server_limit);
-    data.pterodactyl_id && (this.pterodactylID = data.pterodactyl_id);
-    data.avatar && (this.avatar = data.avatar);
-    data.ip && (this.ip = data.ip);
-    data.email && (this.email = data.email);
-    data.email_verified_at &&
-      (this.emailVerifiedAt = new Date(data.email_verified_at));
-    data.discord_verified_at &&
-      (this.discordVerifiedAt = new Date(data.discord_verified_at));
-    data.last_seen && (this.lastSeenAt = new Date(data.last_seen));
-    data.created_at && (this.createdAt = new Date(data.created_at));
-    data.updated_at && (this.updatedAt = new Date(data.updated_at));
+    this.id = data.id;
+    this.name = data.name;
+    this.role = data.role;
+    this.credits = parseFloat(data.credits as any);
+    this.serverLimit = parseFloat(data.server_limit as any);
+    this.pterodactylID = data.pterodactyl_id;
+    this.avatar = data.avatar ?? null;
+    this.ip = data.ip ?? null;
+    this.email = data.email;
+    this.emailVerifiedAt = data.email_verified_at
+      ? new Date(data.email_verified_at)
+      : null;
+    this.discordVerifiedAt = data.discord_verified_at
+      ? new Date(data.discord_verified_at)
+      : null;
+    this.lastSeenAt = data.last_seen ? new Date(data.last_seen) : null;
+    this.createdAt = new Date(data.created_at);
+    this.updatedAt = new Date(data.updated_at);
 
     return this;
   }

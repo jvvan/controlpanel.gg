@@ -28,17 +28,17 @@ export class Server {
   _patch(data: ApiServer) {
     this.data = data;
 
-    data.id && (this.id = data.id);
-    data.name && (this.name = data.name);
-    data.description && (this.description = data.description);
-    data.suspended && (this.suspended = new Date(data.suspended));
-    data.identifier && (this.identifier = data.identifier);
-    data.pterodactyl_id && (this.pterodactylID = data.pterodactyl_id);
-    data.user_id && (this.userID = data.user_id);
-    data.product_id && (this.productID = data.product_id);
-    data.product && this.product._patch(data.product);
-    data.created_at && (this.createdAt = new Date(data.created_at));
-    data.updated_at && (this.updatedAt = new Date(data.updated_at));
+    this.id = data.id;
+    this.name = data.name;
+    this.description = data.description ?? null;
+    this.suspended = data.suspended ? new Date(data.suspended) : null;
+    this.identifier = data.identifier;
+    this.pterodactylID = data.pterodactyl_id;
+    this.userID = data.user_id;
+    this.productID = data.product_id;
+    this.product._patch(data.product);
+    this.createdAt = new Date(data.created_at);
+    this.updatedAt = new Date(data.updated_at);
 
     return this;
   }

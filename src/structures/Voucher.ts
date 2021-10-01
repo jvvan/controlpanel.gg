@@ -12,7 +12,7 @@ export class Voucher {
   credits: number;
   used: boolean;
   status: VoucherStatus;
-  expiresAt?: Date;
+  expiresAt: Date | null;
   createdAt: Date;
   updatedAt: Date;
 
@@ -25,16 +25,16 @@ export class Voucher {
   _patch(data: ApiVoucher) {
     this.data = data;
 
-    data.id && (this.id = data.id);
-    data.memo && (this.memo = data.memo);
-    data.code && (this.code = data.code);
-    data.uses && (this.uses = data.uses);
-    data.credits && (this.credits = data.credits);
-    data.used && (this.used = Boolean(data.used));
-    data.status && (this.status = data.status);
-    data.expires_at && (this.expiresAt = new Date(data.expires_at));
-    data.created_at && (this.createdAt = new Date(data.created_at));
-    data.updated_at && (this.updatedAt = new Date(data.updated_at));
+    this.id = data.id;
+    this.memo = data.memo;
+    this.code = data.code;
+    this.uses = parseFloat(data.uses as any);
+    this.credits = parseFloat(data.credits as any);
+    this.used = Boolean(data.used);
+    this.status = data.status;
+    this.expiresAt = data.expires_at ? new Date(data.expires_at) : null;
+    this.createdAt = new Date(data.created_at);
+    this.updatedAt = new Date(data.updated_at);
 
     return this;
   }
